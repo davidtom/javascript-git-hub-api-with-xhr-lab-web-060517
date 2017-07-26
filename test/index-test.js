@@ -9,16 +9,16 @@ describe('index', () => {
   })
 
   describe('callback functions', () => {
-    // describe('displayCommits', () => {
-    //   it('parses and displays json values', () => {
-    //     var resp = { responseText: commitsData() }
-    //     displayCommits.call(resp)
-    //     el = document.getElementById("details")
-    //     expect(el.innerHTML).toMatch(/Monalisa Octocat/)
-    //     expect(el.innerHTML).toMatch(/octocat/)
-    //     expect(el.innerHTML).toMatch(/Fix all the bugs/)
-    //   })
-    // })
+    describe('displayCommits', () => {
+      it('parses and displays json values', () => {
+        var resp = { responseText: commitsData() }
+        displayCommits.call(resp)
+        el = document.getElementById("details")
+        expect(el.innerHTML).toMatch(/Monalisa Octocat/)
+        expect(el.innerHTML).toMatch(/octocat/)
+        expect(el.innerHTML).toMatch(/Fix all the bugs/)
+      })
+    })
 
     describe('displayBranches', () => {
       it('parses and displays json values', () => {
@@ -46,7 +46,7 @@ describe('index', () => {
     let el
 
     before(() => {
-      el = { dataset: { repository: 'test-repo', username: 'octocat' } }
+      el = { dataset: { repository: 'Spoon-Knife', username: 'octocat' } }
       xhr = sinon.useFakeXMLHttpRequest()
       window.XMLHttpRequest = xhr
 
@@ -64,30 +64,30 @@ describe('index', () => {
       xhr.restore()
     })
 
-    // describe('getRepositories', () => {
-    //   it('calls out to Github', () => {
-    //     document.getElementById("username").value = 'octocat'
-    //     getRepositories()
-    //     expect(requests.length).toBe(1)
-    //     expect(requests[0].url).toBe('https://api.github.com/users/octocat/repos')
-    //   })
-    // })
-    //
-    // describe('getCommits', () => {
-    //   it('calls out to Github', () => {
-    //     getCommits(el)
-    //     expect(requests.length).toBe(1)
-    //     expect(requests[0].url).toBe('https://api.github.com/repos/octocat/test-repo/commits')
-    //   })
-    // })
-    //
-    // describe('getBranches', () => {
-    //   it('calls out to Github', () => {
-    //     getBranches(el)
-    //     expect(requests.length).toBe(1)
-    //     expect(requests[0].url).toBe('https://api.github.com/repos/octocat/test-repo/branches')
-    //   })
-    // })
+    describe('getRepositories', () => {
+      it('calls out to Github', () => {
+        document.getElementById("username").value = 'octocat'
+        getRepositories()
+        expect(requests.length).toBe(1)
+        expect(requests[0].url).toBe('https://api.github.com/users/octocat/repos')
+      })
+    })
+
+    describe('getCommits', () => {
+      it('calls out to Github', () => {
+        getCommits(el)
+        expect(requests.length).toBe(1)
+        expect(requests[0].url).toBe('https://api.github.com/repos/octocat/Spoon-Knife/commits')
+      })
+    })
+
+    describe('getBranches', () => {
+      it('calls out to Github', () => {
+        getBranches(el)
+        expect(requests.length).toBe(1)
+        expect(requests[0].url).toBe('https://api.github.com/repos/octocat/Spoon-Knife/branches')
+      })
+    })
 
   })
 })
